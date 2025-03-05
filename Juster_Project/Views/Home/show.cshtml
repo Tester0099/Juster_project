@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Show_multiple_image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="d-flex flex-wrap  gap-3  align-items-center">
+
+    @foreach (var data in Model)
+    {
+
+        <img src="~/Content/Upload_Image/@data.image"  style="height:100px; width:100px;" class="img-fluid border border-dark"/>
+        <form action="/Home/delete">
+            <input type="hidden" name="id" value="@data.id"/>
+            <button class="btn btn-primary">Delete</button>
+        </form>
+        <a class="btn btn-primary" href="@Url.Action("edit_page","Home", new {id=data.id})">Edit</a>
+    }
+</div>
+<span>@TempData["msg"]</span>

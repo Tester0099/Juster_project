@@ -1,0 +1,19 @@
+﻿@model  Juster_Project.Models.image_data
+@{
+    ViewBag.Title = "edit_page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form action="/Home/Update_image" method="post" enctype="multipart/form-data">
+        <div class="mb-2 ">
+            <input type="hidden" name="id" value="@Model.id"/>
+            <img src="~/Content/Upload_Image/@Model.image" style="height:100px; width:100px;"/><br />
+            <label class="form-label">IMAGE INSERT</label><br />
+            <input type="file" class="border border-1 p-1 rounded" name="image" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+

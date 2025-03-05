@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>dashboard</h2>
+
+<span id="move">@TempData["msg"]</span>
+
+<script>
+    let move = document.getElementById("move");
+    addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+            move.style.display = "none";
+        },3000);
+
+    });
+</script>
