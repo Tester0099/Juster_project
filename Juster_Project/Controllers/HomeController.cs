@@ -551,7 +551,7 @@ namespace Juster_Project.Controllers
 
                 }
                 
-
+                return View(list);
             }
             catch (Exception ex)
             {
