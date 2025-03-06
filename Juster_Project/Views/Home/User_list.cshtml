@@ -1,4 +1,4 @@
-﻿@model Juster_Project.Models.user_data
+﻿
 @{
     ViewBag.Title = "User_list";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,10 +12,10 @@
         <th>Password</th>
     </tr>
 
-    @foreach (var x in Model.user_data)
+    @foreach (var x in Model)
     {
         <tr>
-            <td>@x.id</td>
+            <td>@x.Id</td>
             <td>@x.otp</td>
             <td>@x.email</td>
             <td>@x.password</td>
