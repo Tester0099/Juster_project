@@ -518,6 +518,51 @@ namespace Juster_Project.Controllers
             TempData["msg"] = "Update successfully";
             return RedirectToAction("show");
         }
+
+        [HttpGet]
+        public ActionResult User_list()
+        {
+            LinkedList<user_data> list = new LinkedList<user_data>();
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(contection))
+                {
+                    string query = "Select *from user_data";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        con.Open();
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                list.AddFirst(new user_data()
+                                {
+                                    Id = Convert.ToInt32(rdr["ID"]),
+                                    otp = rdr["otp"].ToString(),
+                                    email = rdr["email"].ToString(),
+                                    password = rdr["password"].ToString()
+
+                                });
+                            }
+                        }
+                    }
+                   
+
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View();
+                }
+
+
+            }
+        }
     }
 }
 
