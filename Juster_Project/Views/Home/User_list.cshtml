@@ -6,10 +6,11 @@
 
 <table class="table-bordered table-hover">
     <tr>
-        <th>Id</th>
-        <th>OTP</th>
+        <th> Id </th>
+        <th> OTP </th>
         <th>Email</th>
         <th>Password</th>
+        <th>Delete</th>
     </tr>
 
     @foreach (var x in Model)
@@ -19,6 +20,12 @@
             <td>@x.otp</td>
             <td>@x.email</td>
             <td>@x.password</td>
+            <td>
+                <form action="/Home/remove">
+                    <input type="hidden" name="id" value="@x.Id"/>
+                    <button class="btn btn-primary"> Delete</button>
+                </form>
+            </td>
         </tr>
     }
 </table>

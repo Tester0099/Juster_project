@@ -547,8 +547,6 @@ namespace Juster_Project.Controllers
                             }
                         }
                     }
-                   
-
                 }
                 
                 return View(list);
@@ -562,6 +560,26 @@ namespace Juster_Project.Controllers
 
 
             }
+        }
+
+
+        public ActionResult remove(int id)
+        {
+            if (Session["otp"]==null)
+            {
+                return RedirectToAction("Index");
+            }
+            using (SqlConnection con = new SqlConnection(contection))
+            {
+                string query = "Delete from user_data where id=@id";
+                using(SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return RedirectToAction("User_list");
         }
     }
 }
